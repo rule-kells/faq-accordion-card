@@ -1,0 +1,275 @@
+:root {
+  /* ### Colors ### */
+
+  /* ## Primary  colors ## */
+
+  /*  Text  */
+
+  --very-dark-desaturated-blue: hsl(238, 29%, 16%);
+  --soft-red: hsl(14, 88%, 65%);
+
+  /* ## background Color Gradient ##  */
+
+  /* Background gradient: */
+
+  --soft-violet: #af67e9;
+  --soft-blue: #6565e7;
+  --background-gradient: linear-gradient(
+    var(--soft-violet) 0%,
+    var(--soft-blue) 100%
+  );
+
+  /* ## Neutral Colors ##  */
+
+  /* background of container  */
+  --white: hsl(0, 0%, 100%);
+
+  /* Text  */
+
+  --very-dark-grayish-blue: hsl(237, 12%, 33%);
+  --dark-grayish-blue: hsl(240, 6%, 50%);
+
+  /* Dividers  */
+
+  --light-grayish-blue: hsl(240, 5%, 91%);
+
+  /* ### Typography 1### */
+
+  /* ## Body Copy ## */
+
+  --fs-body: 0.75rem;
+
+  /* ## Font ##  */
+
+  --ff-primary: 'Kumbh Sans', sans-serif;
+}
+
+/* reset  */
+
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background-gradient);
+  color: var(--dark-grayish-blue);
+  font-family: var(--ff-primary);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: 1.63em;
+  min-height: 100vh;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+}
+
+/* general style and structure  */
+
+img {
+  max-width: 100%;
+}
+
+.hero-img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  transform: translate(-5%, -55%);
+}
+
+.arrow {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.bg-patterns::before {
+  content: '';
+  inset: 0;
+  position: absolute;
+  background-image: url('../images/bg-pattern-mobile.svg');
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.container {
+  position: relative;
+  max-width: 920px;
+  width: 90%;
+  margin: 6.75em auto 0;
+  background: var(--white);
+  border-radius: 1.4375rem;
+  box-shadow: 0 50px 50px -20px hsla(261, 75%, 27%, 0.5);
+}
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+}
+
+/* hero  */
+
+.hero__content {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  z-index: 3;
+  padding: 8.25rem 1.5rem 3rem;
+  align-self: center;
+}
+
+.hero-title {
+  color: var(--very-dark-desaturated-blue);
+  text-align: center;
+  font-size: 2rem;
+  line-height: 2;
+  z-index: 5;
+}
+
+/* inquiry section  */
+
+.inquiry__section {
+  margin-bottom: 1.0625em;
+  border-bottom: 1px solid var(--light-grayish-blue);
+}
+
+.inquiry__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.25rem 0 1.25rem;
+}
+
+.inquiry__header:hover,
+.inquiry_header:active {
+  cursor: pointer;
+}
+
+.inquiry-title {
+  color: var(--very-dark-grayish-blue);
+  font-weight: 400;
+  font-size: 0.8125rem;
+}
+
+.inquiry-title:hover,
+.inquiry-title:active {
+  color: var(--soft-red);
+}
+
+.inquiry__content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+}
+
+.inquiry__section.is-selected .inquiry__content {
+  margin-bottom: 1em;
+}
+
+.inquiry__section.is-selected .inquiry-title {
+  font-weight: 700;
+}
+
+.inquiry__section.is-selected .arrow {
+  transform: rotate(180deg);
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: var(--white);
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: var(--soft-red);
+}
+
+@media (min-width: 50.94em) {
+  /* general style and structure (desktop)  */
+
+  .container {
+    height: 509px;
+    padding: 4.375rem 0 5.1875rem;
+  }
+
+  .d-flex {
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+  }
+
+  .bg-patterns::before {
+    display: none;
+  }
+
+  .bg-patterns::after {
+    content: '';
+    inset: 0;
+    position: absolute;
+    background-image: url('../images/bg-pattern-desktop.svg');
+    background-repeat: no-repeat;
+    background-size: cover auto;
+    background-position: -34.375rem -18.4375rem;
+    z-index: 1;
+  }
+
+  /* hero  */
+
+  .hero-imgs {
+    overflow: hidden;
+    z-index: 2;
+
+    align-self: center;
+  }
+
+  .hero-img {
+    position: relative;
+    transform: translateX(-15%);
+  }
+
+  .hero-imgs::after {
+    content: '';
+    /* overflow: visible; */
+    inset: 0;
+    position: absolute;
+    background-image: url('../images/illustration-box-desktop.svg');
+    background-repeat: no-repeat;
+    transform: translate(-10%, 38%);
+  }
+
+  .hero__content {
+    padding: 0;
+    align-self: center;
+    padding-right: 2.625rem;
+  }
+
+  .hero-title {
+    text-align: left;
+  }
+
+  /* inquiry section  */
+
+  .inquiry__header {
+    margin: 1rem 0 1rem;
+  }
+}
