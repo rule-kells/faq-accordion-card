@@ -177,6 +177,8 @@ img {
   transition: height 0.3s ease-out;
 }
 
+/* is-selected  */
+
 .inquiry__section.is-selected .inquiry__content {
   margin-bottom: 1em;
 }
@@ -188,6 +190,8 @@ img {
 .inquiry__section.is-selected .arrow {
   transform: rotate(180deg);
 }
+
+/* footer  */
 
 .attribution {
   position: absolute;

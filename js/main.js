@@ -1,34 +1,28 @@
 const heroContent = document.querySelector('.hero__content')
 const inquirySections = [...heroContent.querySelectorAll('.inquiry__section')]
-const inquiryContents = [...heroContent.querySelectorAll('.inquiry__content')]
 
-heroContent.addEventListener('click', (e) => {
-  const inquiryHeader = e.target.closest('.inquiry__header')
-  if (!inquiryHeader) return
-  const inquirySection = inquiryHeader.parentElement
-  const inquiryContent = inquiryHeader.nextElementSibling
-  const inquiryBody = inquiryContent.children[0]
+const revealInquiries = (inquiry) => {
+  const content = inquiry.querySelector('.inquiry__content')
+  inquiry.classList.add('is-selected')
+  content.style.height = `${content.scrollHeight}px`
+}
 
-  let height = inquirySection.classList.contains('is-selected')
-    ? 0
-    : inquiryBody.getBoundingClientRect().height
+const hideInquiries = (inquiry) => {
+  const content = inquiry.querySelector('.inquiry__content')
+  inquiry.classList.remove('is-selected')
+  content.style.height = null
+}
 
-  inquirySections.forEach((s) => {
-    s.classList.remove('is-selected')
-    inquirySection.classList.add('is-selected')
-  })
+inquirySections.forEach((inquiry) => {
+  const inquiryHeader = inquiry.querySelector('.inquiry__header')
+  const content = inquiry.querySelector('.inquiry__content')
 
-  inquiryContents.forEach((c) => {
-    c.classList.remove('is-selected')
-    inquiryContent.classList.add('is-selected')
-    if (!inquiryContent.classList.contains('is-selected')) {
-      height = 0
+  inquiryHeader.addEventListener('click', () => {
+    if (content.style.height) {
+      hideInquiries(inquiry)
     } else {
-      inquiryBody.getBoundingClientRect().height
+      inquirySections.forEach((inquiry) => hideInquiries(inquiry))
+      revealInquiries(inquiry)
     }
-
-    inquiryContent.style.height = `${height}px`
   })
-
-  // inquirySection.classList.toggle('is-selected')
 })
